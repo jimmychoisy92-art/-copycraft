@@ -1,0 +1,895 @@
+{
+  "sentEmails": [
+    {
+      "email": "contact@dulcenae.fr",
+      "nom": "Maison de Beauté Dulcenae - Soin Visage - Massage Paris",
+      "secteur": "estheticienne",
+      "date": "2026-05-12T18:29:46.269Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@edendessens.com",
+      "nom": "L'Éden des Sens - Soin visage Biologique Recherche - Minceur LPG - Massage",
+      "secteur": "estheticienne",
+      "date": "2026-05-12T18:34:32.151Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@goldbeautylab.fr",
+      "nom": "Beauty Parlor Paris - Gold Beauty Lab",
+      "secteur": "estheticienne",
+      "date": "2026-05-12T18:39:35.544Z",
+      "status": "sent"
+    },
+    {
+      "email": "pauline.katz@planity.com",
+      "nom": "Bonheur",
+      "secteur": "estheticienne",
+      "date": "2026-05-12T18:44:12.279Z",
+      "status": "sent"
+    },
+    {
+      "email": "pauline.katz@planity.com",
+      "nom": "Beauté Parisienne",
+      "date": "2026-05-12T19:17:22.448Z",
+      "status": "error",
+      "error": "Request timed out."
+    },
+    {
+      "email": "isabella.villegas@fresha.com",
+      "nom": "La cour du bien-être",
+      "date": "2026-05-12T19:17:32.469Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@madamez-institut.fr",
+      "nom": "Madame Z institut de beauté / soin visage et corps / Paris 1 / Paris 2 ‍ ️",
+      "date": "2026-05-12T19:17:42.477Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@5bienetre.com",
+      "nom": "5 Bien Être",
+      "date": "2026-05-12T19:17:52.487Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@latitudezen-institutdebeaute.com",
+      "nom": "Latitude ZEN",
+      "date": "2026-05-12T19:18:02.493Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "pauline.katz@planity.com",
+      "nom": "Aixin Beauté Paris 6 eme",
+      "date": "2026-05-12T19:18:12.516Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@infinityesthetique.fr",
+      "nom": "Infinity Esthétique",
+      "date": "2026-05-12T19:18:22.520Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@beautenobleparis.fr",
+      "nom": "Beauté Noble Paris - Institut de beauté - Minceur -Aquabike",
+      "date": "2026-05-12T19:18:32.523Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "svasquez@paomaparis.fr",
+      "nom": "Maison de Beauté PAOMA | Soins Visage et Corps à Paris",
+      "date": "2026-05-12T19:18:42.524Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "commerce@belange-paris.com",
+      "nom": "Bel Ange",
+      "date": "2026-05-12T19:18:52.528Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "neuilly@beautyssime.fr",
+      "nom": "BEAUTYSSIME Monge - Centre Expert LPG | Minceur & Anti-Âge",
+      "date": "2026-05-12T19:19:02.530Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "webmarketing@lecomptoirduvisage.com",
+      "nom": "Le Comptoir du Visage - Expert Soin Visage & regard",
+      "date": "2026-05-12T19:19:12.531Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@echappeebelle-75.fr",
+      "nom": "L Échappée Belle Institut de Beaute",
+      "date": "2026-05-12T19:19:22.533Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "pauline.katz@planity.com",
+      "nom": "Institut GUINOT HYDRAFACIAL LPG Quartier Latin Paris 5 (7j/7j 10h00-23h00 sur RDV)",
+      "date": "2026-05-12T19:19:32.537Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "service.client@treatwell.fr",
+      "nom": "L-Institut Parisien",
+      "date": "2026-05-12T19:19:42.539Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@rosebeauty.fr",
+      "nom": "Rose Beauty",
+      "date": "2026-05-12T19:19:52.541Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "nath@institut-quintessence-paris.com",
+      "nom": "Institut de Beauté Quint'essence - Institut de beauté Paris 11",
+      "date": "2026-05-12T19:20:02.545Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@esthetic-center.com",
+      "nom": "Beauty success l’institut (Esthetic Center)",
+      "date": "2026-05-12T19:20:12.549Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "taavi.thiel@bgfactory.com",
+      "nom": "Institut de beauté pour Hommes BG Factory",
+      "date": "2026-05-12T19:20:22.554Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "infos@elixir-beaute-paris.fr",
+      "nom": "Elixir Beauty Paris",
+      "date": "2026-05-12T19:20:33.148Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@mixbeauty.com",
+      "nom": "Mix Beauty",
+      "date": "2026-05-12T19:21:28.296Z",
+      "status": "error",
+      "error": "529 {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CayDaqxcCXr1LtsEcUEbM\"}"
+    },
+    {
+      "email": "eboulanger@alixe-fougeres.com",
+      "nom": "Institut de beauté - Alixe Fougères Lourmel - Paris 15",
+      "date": "2026-05-12T19:38:09.231Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@manikua.com",
+      "nom": "Mani Kua | Institut de beauté, onglerie, épilation, soin du visage et minceur",
+      "date": "2026-05-12T19:39:05.674Z",
+      "status": "error",
+      "error": "529 {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CayEvk6K9HV3z7D23yXhm\"}"
+    },
+    {
+      "email": "contact@yves-rocher.fr",
+      "nom": "Yves Rocher",
+      "date": "2026-05-12T19:39:40.564Z",
+      "status": "error",
+      "error": "529 {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CayEyTq6pYNZMV34XUuFV\"}"
+    },
+    {
+      "email": "efalguieres@guinot.com",
+      "nom": "Chérine Beauté - Drainage lymphatique - Renata Franca",
+      "date": "2026-05-12T19:40:25.668Z",
+      "status": "error",
+      "error": "529 {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CayF2hceijM6FgRpQUpyc\"}"
+    },
+    {
+      "email": "info@arbreasens.fr",
+      "nom": "Spa Arbre à Sens Paris",
+      "date": "2026-05-12T19:40:55.475Z",
+      "status": "error",
+      "error": "529 {\"type\":\"error\",\"error\":{\"type\":\"overloaded_error\",\"message\":\"Overloaded\"},\"request_id\":\"req_011CayF4vikYW4y2TQYBYkNQ\"}"
+    },
+    {
+      "email": "f.ahmed@chevalblanc.com",
+      "nom": "Plénitude",
+      "date": "2026-05-13T13:40:58.126Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "martial@comptoirdelagastronomie.com",
+      "nom": "Comptoir de la Gastronomie",
+      "date": "2026-05-13T13:44:57.752Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "contact@la-scene.paris",
+      "nom": "La Scène",
+      "date": "2026-05-13T13:48:31.699Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "contact@larome-paris.com",
+      "nom": "L'Arôme",
+      "date": "2026-05-13T13:52:17.220Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "direction@leroch-hotel.com",
+      "nom": "Maison 28",
+      "date": "2026-05-13T13:52:18.424Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contactstho@laregalade.paris",
+      "nom": "La Régalade Saint-Honoré",
+      "date": "2026-05-13T13:56:11.675Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "sven.dubois@ritzparis.com",
+      "nom": "Restaurant Espadon - Ritz Paris",
+      "date": "2026-05-13T16:00:05.962Z",
+      "status": "error",
+      "error": "Upload catbox échoué"
+    },
+    {
+      "email": "info@maceorestaurant.com",
+      "nom": "Maceo",
+      "date": "2026-05-13T16:00:05.982Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "gregory.millon@regina-hotel.com",
+      "nom": "Chez Suzy - Hôtel Regina Louvre",
+      "date": "2026-05-13T16:00:06.372Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "f.ahmed@chevalblanc.com",
+      "nom": "Hakuba",
+      "date": "2026-05-13T16:00:06.486Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "teresa.seta@langosteria.com",
+      "nom": "Langosteria",
+      "date": "2026-05-13T16:00:06.553Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "parris.fotias@dorchestercollection.com",
+      "nom": "Restaurant le Meurice Alain Ducasse",
+      "date": "2026-05-13T16:00:06.573Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@restaurantpassionne.com",
+      "nom": "Passionné",
+      "date": "2026-05-13T16:00:06.591Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@thefork.fr",
+      "nom": "JIN",
+      "date": "2026-05-13T16:00:06.667Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@aldehyde.paris",
+      "nom": "Aldehyde",
+      "date": "2026-05-13T16:00:06.711Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "reservation@liquide.paris",
+      "nom": "Liquide",
+      "date": "2026-05-13T16:00:06.728Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "presse@19saint-roch.com",
+      "nom": "19 SAINT ROCH.",
+      "date": "2026-05-13T16:00:06.735Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "gbenard@fitz-group.fr",
+      "nom": "La Fontaine Gaillon",
+      "date": "2026-05-13T16:00:06.805Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "nicola.frizzale@fourseasons.com",
+      "nom": "L'Orangerie",
+      "date": "2026-05-13T16:00:06.930Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "theodore@alfred-paris.com",
+      "nom": "Alfred",
+      "date": "2026-05-13T16:00:06.958Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@fleurdepave.com",
+      "nom": "Fleur de pavé",
+      "date": "2026-05-13T16:00:06.967Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@restaurant-erh.com",
+      "nom": "RESTAURANT ERH",
+      "date": "2026-05-13T16:00:07.017Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@empreinte-paris.com",
+      "nom": "Empreinte",
+      "date": "2026-05-13T16:00:07.203Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@accents-restaurant.com",
+      "nom": "ACCENTS table bourse",
+      "date": "2026-05-13T16:00:07.214Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "restaurant@lapetiteregalade.com",
+      "nom": "La Petite Régalade",
+      "date": "2026-05-13T16:00:07.223Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@restaurantshabour.com",
+      "nom": "Shabour",
+      "date": "2026-05-13T16:00:07.402Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "chef@mori-venicebar.com",
+      "nom": "mori",
+      "date": "2026-05-13T16:00:07.411Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@tekesrestaurant.com",
+      "nom": "Tekés",
+      "date": "2026-05-13T16:00:07.416Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "gbenard@fitz-group.fr",
+      "nom": "Hollywood Savoy",
+      "date": "2026-05-13T16:00:09.148Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "contact@lemesturet.com",
+      "nom": "Le Mesturet",
+      "date": "2026-05-13T16:00:09.154Z",
+      "status": "error",
+      "error": "Site inaccessible"
+    },
+    {
+      "email": "aurore@parisdinterieur.fr",
+      "nom": "Paris d'intérieur",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T17:59:35.336Z",
+      "status": "sent"
+    },
+    {
+      "email": "agnes@createursdinterieur.com",
+      "nom": "Créateurs d'intérieur",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:02:08.986Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@lesfeesdeco.com",
+      "nom": "Agence Les Fées Déco - Studio Broucqsault & Lepetit Interior Design - Maîtrise d'oeuvre",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:04:38.310Z",
+      "status": "sent"
+    },
+    {
+      "email": "tiffanie@verocotrel.fr",
+      "nom": "Agence Véronique Cotrel",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:07:06.872Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@perspectives-architecturedesign.com",
+      "nom": "Perspectives Architecture & Design - Architecte d'intérieur - Paris",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:09:40.589Z",
+      "status": "sent"
+    },
+    {
+      "email": "odile@o2b-designinterieur.com",
+      "nom": "O2B Design Intérieur, Architecte d'Intérieur Paris 16e",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:12:10.113Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@lesdecoreuses.fr",
+      "nom": "Les Décoreuses - Architectes d'intérieurs Paris 12ème",
+      "secteur": "architecte_interieur",
+      "emailType": "G",
+      "date": "2026-05-13T18:14:40.502Z",
+      "status": "sent"
+    },
+    {
+      "email": "julia@atelierjoi.com",
+      "nom": "Atelier JOI",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:17:06.377Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@miodesign.fr",
+      "nom": "Architecte d'intérieur Paris Mio Design",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:19:35.480Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@manuelmartinez.fr",
+      "nom": "Manuel MARTINEZ",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:22:03.830Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@h-8.fr",
+      "nom": "STUDIO H-8 ARCHITECTURE | Architecte d'Intérieur Paris | Lea & Emmanuel",
+      "secteur": "architecte_interieur",
+      "emailType": "D",
+      "date": "2026-05-13T18:24:36.101Z",
+      "status": "sent"
+    },
+    {
+      "email": "melissa.damianthe@mh-interior.fr",
+      "nom": "MH INTERIOR - Sabrina Darmon | Architecte d’intérieur Paris 20e",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:27:04.020Z",
+      "status": "sent"
+    },
+    {
+      "email": "studio@xavierlemoine.com",
+      "nom": "Xavier Lemoine",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:29:32.098Z",
+      "status": "sent"
+    },
+    {
+      "email": "claire@studiocastille.fr",
+      "nom": "Studio Castille",
+      "secteur": "architecte_interieur",
+      "emailType": "E",
+      "date": "2026-05-13T18:32:00.944Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@dessance.com",
+      "nom": "Dessance",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-13T18:34:09.171Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@chefjeanyves.com",
+      "nom": "Chef Jean Yves",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:13:21.233Z",
+      "status": "sent"
+    },
+    {
+      "email": "laurene@datil-restaurant.fr",
+      "nom": "Datil",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:15:56.777Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@larchimede.paris",
+      "nom": "LArchimede | Restaurant Republique Paris 10 (Canal Saint Martin) | Terrasse",
+      "secteur": "restaurant",
+      "emailType": "D",
+      "date": "2026-05-14T09:18:34.246Z",
+      "status": "sent"
+    },
+    {
+      "email": "gregory.nivert@maisonduboisparis.fr",
+      "nom": "Maison Dubois",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:21:07.735Z",
+      "status": "sent"
+    },
+    {
+      "email": "ateliermaitrealbert@guysavoy.com",
+      "nom": "Restaurant Guy Savoy",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:23:41.552Z",
+      "status": "sent"
+    },
+    {
+      "email": "flore.mathou@oetkerhotels.com",
+      "nom": "Epicure",
+      "secteur": "restaurant",
+      "emailType": "D",
+      "date": "2026-05-14T09:26:12.881Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@chef-thai.com",
+      "nom": "Le Chef Thaï",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:28:41.549Z",
+      "status": "sent"
+    },
+    {
+      "email": "yannick.alleno@yannick-alleno.com",
+      "nom": "Alléno",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:31:14.650Z",
+      "status": "sent"
+    },
+    {
+      "email": "lizhealey@peninsula.com",
+      "nom": "L'Oiseau Blanc",
+      "secteur": "restaurant",
+      "emailType": "D",
+      "date": "2026-05-14T09:33:40.773Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@au-bascou.fr",
+      "nom": "Au Bascou",
+      "secteur": "restaurant",
+      "emailType": "G",
+      "date": "2026-05-14T09:36:14.932Z",
+      "status": "sent"
+    },
+    {
+      "email": "oualid_zaouali@tourdargent.com",
+      "nom": "La Tour d'Argent",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:38:42.828Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@grandcoeur.paris",
+      "nom": "GrandCœur",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:41:15.302Z",
+      "status": "sent"
+    },
+    {
+      "email": "lesvitelloni@lesvitelloni.com",
+      "nom": "Les Vitelloni",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:43:43.532Z",
+      "status": "sent"
+    },
+    {
+      "email": "vchaleyssin@bhv.fr",
+      "nom": "La table cachée par Michel Roth - BHV Marais",
+      "secteur": "restaurant",
+      "emailType": "D",
+      "date": "2026-05-14T09:46:09.590Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@poulicheparis.com",
+      "nom": "Pouliche - Amandine Chaignot",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:48:39.636Z",
+      "status": "sent"
+    },
+    {
+      "email": "jbanctel@lareserve-paris.com",
+      "nom": "Restaurant Le Gabriel",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:51:12.512Z",
+      "status": "sent"
+    },
+    {
+      "email": "info@atsushitanaka.com",
+      "nom": "AT",
+      "secteur": "restaurant",
+      "emailType": "A",
+      "date": "2026-05-14T09:53:36.835Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@lesergentrecruteur.fr",
+      "nom": "Le Sergent Recruteur",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:56:09.143Z",
+      "status": "sent"
+    },
+    {
+      "email": "info@eme.restaurant",
+      "nom": "eme restaurant",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T09:58:44.058Z",
+      "status": "sent"
+    },
+    {
+      "email": "resto@baffo.fr",
+      "nom": "BAFFO",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:01:11.235Z",
+      "status": "sent"
+    },
+    {
+      "email": "reservation@hestia-restaurant.com",
+      "nom": "Hestia Restaurant",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:03:42.295Z",
+      "status": "sent"
+    },
+    {
+      "email": "tim@linktr.ee",
+      "nom": "La Réserve Du Terroir - Restaurant / Bar à vins Paris 4",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:06:17.790Z",
+      "status": "sent"
+    },
+    {
+      "email": "admin@eclipses.fr",
+      "nom": "ECLIPSES By Cyril Choisne",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:08:46.961Z",
+      "status": "sent"
+    },
+    {
+      "email": "r.lefebvre@legrandmazarin.com",
+      "nom": "Boubalé",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:11:14.651Z",
+      "status": "sent"
+    },
+    {
+      "email": "restaurant@lava-paris.com",
+      "nom": "Restaurant LAVA",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:13:42.717Z",
+      "status": "sent"
+    },
+    {
+      "email": "jules@lesfoodies.paris",
+      "nom": "Les Foodies",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:16:11.875Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@lesfous.paris",
+      "nom": "Les Fous de l'Ile",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:18:44.994Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@lespetitesbouchees.com",
+      "nom": "Les petites bouchées",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:21:14.513Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@jaja-resto.com",
+      "nom": "Jaja",
+      "secteur": "restaurant",
+      "emailType": "E",
+      "date": "2026-05-14T10:23:41.624Z",
+      "status": "sent"
+    },
+    {
+      "email": "studio@xavierlemoine.com",
+      "nom": "Xavier Lemoine",
+      "secteur": "architecte_interieur",
+      "event": "reply",
+      "date": "2026-05-18T12:34:22.505Z"
+    },
+    {
+      "email": "contact@grandcoeur.paris",
+      "nom": "GrandCœur",
+      "secteur": "restaurant",
+      "event": "reply",
+      "date": "2026-05-18T12:34:23.747Z"
+    },
+    {
+      "email": "soniaalam@instagram.com",
+      "nom": "I LOVE BELLA Paris-3eme",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:41:57.903Z",
+      "status": "sent"
+    },
+    {
+      "email": "cbarbereau@atelierdusourcil.com",
+      "nom": "L'Atelier du Sourcil - Paris 3",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:44:04.990Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@eyedesigner.fr",
+      "nom": "Eyedesigner",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:46:14.376Z",
+      "status": "sent"
+    },
+    {
+      "email": "angers@jfg-clinic.com",
+      "nom": "JFG Clinic Paris 3",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:48:22.532Z",
+      "status": "sent"
+    },
+    {
+      "email": "serviceclient@my-blend.com",
+      "nom": "My Blend",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:50:28.739Z",
+      "status": "sent"
+    },
+    {
+      "email": "marine@fauve-paris.com",
+      "nom": "Studio Fauve",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:52:34.398Z",
+      "status": "sent"
+    },
+    {
+      "email": "soniaalam@instagram.com",
+      "nom": "STUDIO LBB",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:54:40.207Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@institutberry.fr",
+      "nom": "Institut Berry - Paris 4",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:56:50.624Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@belhommeinstitut.com",
+      "nom": "Bel Homme Institut",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T12:58:58.763Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@elsaweiser.com",
+      "nom": "Institut Elsa Weiser",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:01:08.832Z",
+      "status": "sent"
+    },
+    {
+      "email": "infos@jikisbeaute.com",
+      "nom": "Espace JIKI's beauté",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:03:21.503Z",
+      "status": "sent"
+    },
+    {
+      "email": "cbarbereau@atelierdusourcil.com",
+      "nom": "L'Atelier du Sourcil - Paris 6",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:05:28.222Z",
+      "status": "sent"
+    },
+    {
+      "email": "commercial@freepersephone.com",
+      "nom": "Free Persephone | Nail Bar. Massages. Facials.",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:07:49.436Z",
+      "status": "sent"
+    }
+  ],
+  "days": []
+}

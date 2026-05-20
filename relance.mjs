@@ -21,14 +21,14 @@ if (!SECTEUR_ARG) {
 }
 
 const anthropic = new Anthropic({
-  apiKey: 'process.env.ANTHROPIC_API_KEY',
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 const transporter = nodemailer.createTransport({
   host: 'ssl0.ovh.net',
   port: 465,
   secure: true,
-  auth: { user: 'contact@thecopycraft.fr', pass: 'pompiers94Creteil.' },
+  auth: { user: 'contact@thecopycraft.fr', pass: process.env.SMTP_PASS },
 });
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────

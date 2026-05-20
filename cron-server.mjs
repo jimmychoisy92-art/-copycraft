@@ -124,10 +124,24 @@ scheduleDaily(22, 0, false, async () => {
   await run('enrich-leads.mjs');
 });
 
-// ─── Serveur HTTP keep-alive (Railway exige un port ouvert) ──────────────
+// ─── Serveur HTTP keep-alive + pages démo ─────────────────────────────────
 import http from 'http';
+import fs from 'fs';
 const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => {
+  // Servir les pages démo (ex: /demo/dulcenae)
+  const demoMatch = req.url.match(/^\/demo\/([a-z0-9_-]+)$/i);
+  if (demoMatch) {
+    const demoFile = path.join(__dirname, 'demos', demoMatch[1] + '.html');
+    if (fs.existsSync(demoFile)) {
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(fs.readFileSync(demoFile));
+      return;
+    }
+    res.writeHead(404);
+    res.end('Démo non trouvée');
+    return;
+  }
   res.writeHead(200);
   res.end('Copycraft cron OK — ' + new Date().toLocaleString('fr-FR'));
 }).listen(PORT, () => {

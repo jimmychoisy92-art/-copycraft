@@ -1666,11 +1666,13 @@
     "domain": "my-blend.com",
     "email": "serviceclient@my-blend.com",
     "rating": 5,
-    "statut": "j0_envoyé",
+    "statut": "rdv_proposé",
     "date_ajout": "2026-05-12",
-    "notes": "",
+    "notes": "[20/05/2026] Email suivi envoyé avec lien Calendly\n[20/05/2026] 🔥 6 click(s) sur le lien CTA\n",
     "secteur": "estheticienne",
-    "date_contact": "2026-05-18"
+    "date_contact": "2026-05-18",
+    "clicks": 6,
+    "date_click": "2026-05-20"
   },
   {
     "nom": "Barbarella institut",
@@ -2402,10 +2404,11 @@
     "domain": "pur-paris.com",
     "email": "contact@pur-paris.com",
     "rating": 4.5,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "ColorForever",
@@ -2500,10 +2503,13 @@
     "domain": "biologique-recherche.com",
     "email": "charlotte.diasse@biologique-recherche.com",
     "rating": 4.7,
-    "statut": "à_contacter",
+    "statut": "rdv_proposé",
     "date_ajout": "2026-05-12",
-    "notes": "",
-    "secteur": "estheticienne"
+    "notes": "[20/05/2026] Email suivi envoyé avec lien Calendly\n[20/05/2026] 🔥 2 click(s) sur le lien CTA\n",
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18",
+    "clicks": 2,
+    "date_click": "2026-05-20"
   },
   {
     "nom": "PARADISE FOR WOMEN - Beauty Spa",
@@ -2542,10 +2548,11 @@
     "domain": "hammampacha.com",
     "email": "contact-ce@hammampacha.com",
     "rating": 4.7,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Laser Center Murano",
@@ -2584,10 +2591,11 @@
     "domain": "bcbgparis.com",
     "email": "contact@bcbgparis.com",
     "rating": 4.4,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Nails Luxe75",
@@ -2682,10 +2690,11 @@
     "domain": "karabella.fr",
     "email": "lamia.chaka@karabella.fr",
     "rating": 4.5,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Maison Celeste - Institut de Beauté - Paris 7ème",
@@ -2710,10 +2719,11 @@
     "domain": "cestdujoli.me",
     "email": "floriane@cestdujoli.me",
     "rating": 5,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Institut de beauté Paris 75007 Bodyminute",
@@ -2766,10 +2776,11 @@
     "domain": "spaclemens.com",
     "email": "pauline.picaut@spaclemens.com",
     "rating": 4.9,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Lily Nails paris 7 /Tour Eiffel",
@@ -2836,10 +2847,11 @@
     "domain": "longtimeliner.fr",
     "email": "paris@longtimeliner.fr",
     "rating": 4.8,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "L'Institut Le Bon Marché",
@@ -2892,10 +2904,11 @@
     "domain": "sensation-spa.com",
     "email": "contact@sensation-spa.com",
     "rating": 4.7,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Massage Paris 7 - Pivoines Salon de Massage - Massage Tui Na Paris - Massage Energétique - Réflexologie",
@@ -2906,10 +2919,11 @@
     "domain": "pagesjaunes.fr",
     "email": "yroland@pagesjaunes.fr",
     "rating": 5,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Hairdresser Beauty Room Paris 7 ✂",
@@ -2948,10 +2962,11 @@
     "domain": "vernissage-paris.com",
     "email": "contact@vernissage-paris.com",
     "rating": 4.3,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "New Esthetic Paris",
@@ -2962,10 +2977,11 @@
     "domain": "new-esthetic.com",
     "email": "info@new-esthetic.com",
     "rating": 4.1,
-    "statut": "à_contacter",
+    "statut": "j0_envoyé",
     "date_ajout": "2026-05-12",
     "notes": "",
-    "secteur": "estheticienne"
+    "secteur": "estheticienne",
+    "date_contact": "2026-05-18"
   },
   {
     "nom": "Lanqi-spa",

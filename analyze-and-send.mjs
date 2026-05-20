@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   secure: true,
   auth: {
     user: 'contact@thecopycraft.fr',
-    pass: 'pompiers94Creteil.',
+    pass: process.env.SMTP_PASS,
   },
 });
 

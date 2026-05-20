@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 const GOOGLE_API_KEY = 'AIzaSyBGPC9dY5UXQrfDSwevc_A9YLJyhJmbMp4';
-const HUNTER_API_KEY = 'f761e4209f97623150e563ea2b284d87629ef090';
+const HUNTER_API_KEY = process.env.HUNTER_KEY;
 const CRM_FILE = './leads.json';
 
 // Villes + arrondissements Paris pour maximiser les résultats

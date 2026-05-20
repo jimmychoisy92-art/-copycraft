@@ -5,7 +5,7 @@
 import fs from 'fs';
 
 const LEADS_FILE  = './leads-all.json';
-const HUNTER_KEY  = 'f761e4209f97623150e563ea2b284d87629ef090';
+const HUNTER_KEY  = process.env.HUNTER_KEY;
 const BATCH_SIZE  = 50;   // leads par session (limite API Hunter gratuit)
 const DELAY_MS    = 1200; // 1.2s entre chaque requête
 

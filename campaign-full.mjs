@@ -11,6 +11,7 @@ import { exec } from 'child_process';
 import { promisify } from 'util';
 import { auditLead } from './audit.mjs';
 import { generateMockupScreenshots } from './mockups.mjs';
+import { generateDemoForLead } from './generate-demo-site.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const execAsync = promisify(exec);
@@ -237,14 +238,14 @@ if (!SECTEUR_ARG) {
 }
 
 const anthropic = new Anthropic({
-  apiKey: 'process.env.ANTHROPIC_API_KEY',
+  apiKey: process.env.ANTHROPIC_API_KEY,
 });
 
 const transporter = nodemailer.createTransport({
   host: 'ssl0.ovh.net',
   port: 465,
   secure: true,
-  auth: { user: 'contact@thecopycraft.fr', pass: 'pompiers94Creteil.' },
+  auth: { user: 'contact@thecopycraft.fr', pass: process.env.SMTP_PASS },
 });
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────
@@ -348,43 +349,9 @@ STRUCTURE DE L'EMAIL :
 
 Retourne UNIQUEMENT le HTML complet, sans commentaires, sans balises \`\`\`.`,
 
-  C: null, // Email C géré séparément via generateEmailC (mockups Puppeteer)
+  C: null, // Email C géré séparément via generateEmailC (démo site réel + screenshot)
 
-  D: (lead, audit) => `Génère un email HTML de prospection commerciale en français pour ${lead.nom}, un(e) ${lead.secteur} à ${lead.ville || 'Paris'}.
-
-Problème détecté : site web présent (${audit.site.url || lead.website}) mais non optimisé.${!audit.site.hasCTA ? ' Pas de call-to-action détecté.' : ' Temps de chargement lent détecté.'}
-Objet souhaité : "Votre site — quelques pistes pour plus de réservations"
-
-STYLE HTML :
-- Table-based, compatible tous clients email
-- Fond global : #f4f4f4
-- Header : fond #1a1a1a, "THE COPY CRAFT" en blanc, sous-titre en #999
-- Corps : fond blanc, border-radius 8px, padding 40px
-- Accent couleur : #e8944a
-- Footer : fond #1a1a1a, texte blanc
-
-TON ET RÈGLES :
-- Vouvoiement obligatoire
-- Sobre, direct, zéro tiret
-- Citer l'URL réelle du site
-
-STRUCTURE :
-1. Accroche : "J'ai analysé le site de ${lead.nom} (${audit.site.url || lead.website}). Voici ce qui freine probablement vos réservations."
-2. Bloc "Problèmes détectés" : 2-3 problèmes concrets${!audit.site.hasCTA ? ' — absence de bouton de réservation ou formulaire visible' : ''} avec bordure gauche #e8944a
-3. Bloc dark "CE QU'ON FAIT" :
-   - Refonte des textes pour convertir davantage
-   - Ajout d'un parcours client clair (CTA, formulaire)
-   - Optimisation de la vitesse et du mobile
-   - Mise en valeur de vos services phares
-4. Bloc témoignage (fond #f9f5f0, bordure gauche 3px #e8944a, padding 20px, border-radius 6px) :
-   Citation en italique : "Mon site existait depuis 3 ans sans générer de réservations. TheCopyCraft a retravaillé les textes et ajouté un vrai parcours client — +62% de demandes en ligne en 6 semaines."
-   Auteur en gras : "— Sophie R., salon de coiffure · Paris 16e"
-5. Tarif : "299€" — prix unique, sans barré
-6. Bouton CTA noir : "Améliorer mon site →"
-   Lien : mailto:contact@thecopycraft.fr?subject=${encodeSubject('Refonte site ' + lead.nom)}&body=${encodeSubject('Bonjour,\n\nJe souhaite améliorer mon site.\n\nMon site : ' + (audit.site.url || lead.website || '') + '\nMon téléphone : \nDisponibilités : \n\nCordialement')}
-6. Footer
-
-Retourne UNIQUEMENT le HTML complet, sans commentaires, sans balises \`\`\`.`,
+  D: null, // Email D géré séparément via generateEmailD (démo site réel + screenshot)
 
   E: (lead, audit) => `Génère un email HTML de prospection commerciale en français pour ${lead.nom}, un(e) ${lead.secteur} à ${lead.ville || 'Paris'}.
 
@@ -466,6 +433,142 @@ Retourne UNIQUEMENT le HTML complet, sans commentaires, sans balises \`\`\`.`,
 };
 
 // ─── CLAUDE ───────────────────────────────────────────────────────────────────
+
+// ─── EMAIL D — site existant à améliorer, démo site réel + screenshot ────────
+
+async function generateEmailD(lead, audit) {
+  const siteUrl = audit.site.url || lead.website || '';
+  const hasCTA = audit.site.hasCTA;
+
+  // Génération du site démo amélioré + screenshot
+  let demoUrl = null;
+  let screenshotBase64 = null;
+  try {
+    console.log(`  🎨 Génération site démo pour email D...`);
+    const demo = await generateDemoForLead(lead);
+    demoUrl = demo.url;
+    screenshotBase64 = demo.screenshotBase64;
+  } catch (e) {
+    console.log(`  ⚠️  Génération démo échouée: ${e.message}`);
+  }
+
+  // Bloc visuel : screenshot cliquable ou fallback bouton texte
+  let visualBlock;
+  if (demoUrl && screenshotBase64) {
+    visualBlock = `
+  <tr><td style="padding:0 28px 24px;">
+    <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">À quoi pourrait ressembler votre site optimisé</p>
+    <a href="${demoUrl}" style="display:block;text-decoration:none;" target="_blank">
+      <img src="data:image/png;base64,${screenshotBase64}"
+           style="width:100%;max-width:520px;border:1px solid #eee;border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:block;margin:0 auto;"
+           alt="Aperçu de votre site vitrine">
+      <div style="text-align:center;margin-top:12px;">
+        <span style="display:inline-block;padding:14px 32px;background:#e8944a;color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:4px;">
+          Voir le site complet →
+        </span>
+      </div>
+    </a>
+    <p style="margin:14px 0 0;font-size:12px;color:#aaa;text-align:center;font-style:italic;">Refonte proposée pour ${lead.nom} — 100% personnalisable</p>
+  </td></tr>`;
+  } else if (demoUrl) {
+    visualBlock = `
+  <tr><td style="padding:0 28px 24px;text-align:center;">
+    <a href="${demoUrl}" style="display:inline-block;text-decoration:none;" target="_blank">
+      <div style="padding:14px 32px;background:#e8944a;color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:4px;">
+        Voir le site optimisé →
+      </div>
+    </a>
+  </td></tr>`;
+  } else {
+    visualBlock = `
+  <tr><td style="padding:0 28px 24px;text-align:center;">
+    <a href="mailto:contact@thecopycraft.fr?subject=${encodeURIComponent('Refonte site ' + lead.nom)}"
+      style="display:inline-block;background:#e8944a;color:#fff;font-size:13px;font-weight:700;padding:14px 32px;border-radius:4px;text-decoration:none;letter-spacing:1px;">
+      Améliorer mon site →
+    </a>
+  </td></tr>`;
+  }
+
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f4f4f4;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f4;">
+<tr><td align="center" style="padding:20px 10px;">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;">
+
+  <tr><td style="background:#1a1a1a;padding:26px 32px;text-align:center;">
+    <div style="font-size:22px;font-weight:900;letter-spacing:4px;color:#fff;font-family:Georgia,serif;">THE COPY CRAFT</div>
+    <div style="font-size:11px;color:#e8944a;letter-spacing:2px;margin-top:6px;text-transform:uppercase;">Audit · Copywriting · Conversion</div>
+  </td></tr>
+
+  <tr><td style="padding:32px 28px 20px;">
+    <p style="margin:0 0 16px;font-size:21px;font-weight:900;color:#1a1a1a;line-height:1.3;">J'ai analysé le site de ${lead.nom}.<br>Voici ce qui freine probablement vos réservations.</p>
+    <p style="margin:0;font-size:14px;color:#555;line-height:1.8;">URL analysée : <a href="${siteUrl}" style="color:#e8944a;">${siteUrl}</a></p>
+  </td></tr>
+
+  <tr><td style="padding:0 28px 24px;">
+    <p style="margin:0 0 14px;font-size:14px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:1px;">Problèmes détectés</p>
+    ${!hasCTA ? `<div style="border-left:3px solid #e8944a;padding:12px 16px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Aucun bouton de réservation visible</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">Les visiteurs ne savent pas quoi faire — ils partent.</p>
+    </div>` : ''}
+    <div style="border-left:3px solid #e8944a;padding:12px 16px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Textes non optimisés pour la conversion</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">Un visiteur décide en 8 secondes. Les mots comptent autant que le design.</p>
+    </div>
+    <div style="border-left:3px solid #e8944a;padding:12px 16px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Parcours client peu clair</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">De l'arrivée sur le site jusqu'à la réservation — chaque étape compte.</p>
+    </div>
+  </td></tr>
+
+  ${visualBlock}
+
+  <tr><td style="padding:0 28px 24px;">
+    <div style="background:#1a1a1a;border-radius:8px;padding:22px 24px;">
+      <p style="margin:0 0 12px;font-size:13px;font-weight:700;color:#e8944a;text-transform:uppercase;letter-spacing:1px;">Ce qu'on fait</p>
+      <table width="100%" cellpadding="0" cellspacing="0"><tr>
+        <td style="width:50%;vertical-align:top;">
+          <p style="margin:0 0 7px;color:#fff;font-size:13px;">✓ Refonte des textes (copywriting)</p>
+          <p style="margin:0 0 7px;color:#fff;font-size:13px;">✓ Ajout d'un parcours client clair</p>
+        </td>
+        <td style="width:50%;vertical-align:top;">
+          <p style="margin:0 0 7px;color:#fff;font-size:13px;">✓ Optimisation mobile et vitesse</p>
+          <p style="margin:0;color:#fff;font-size:13px;">✓ CTA et formulaire de réservation</p>
+        </td>
+      </tr></table>
+    </div>
+  </td></tr>
+
+  <tr><td style="padding:0 28px 24px;">
+    <div style="background:#f9f5f0;border-left:3px solid #e8944a;border-radius:6px;padding:18px 20px;">
+      <p style="margin:0 0 8px;font-size:14px;color:#444;font-style:italic;line-height:1.6;">"Mon site existait depuis 3 ans sans générer de réservations. TheCopyCraft a retravaillé les textes et ajouté un vrai parcours client — +62% de demandes en ligne en 6 semaines."</p>
+      <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a1a;">— Sophie R., salon de coiffure · Paris 16e</p>
+    </div>
+  </td></tr>
+
+  <tr><td style="padding:0 28px 28px;">
+    <div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 24px;text-align:center;">
+      <div style="font-size:13px;color:#e8944a;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Refonte complète</div>
+      <div style="font-size:48px;font-weight:900;color:#1a1a1a;line-height:1;">299€</div>
+      <div style="font-size:13px;color:#888;margin-top:6px;">Prix unique · Sans abonnement</div>
+    </div>
+  </td></tr>
+
+  <tr><td style="padding:0 28px 36px;text-align:center;">
+    <a href="mailto:contact@thecopycraft.fr?subject=${encodeURIComponent('Refonte site ' + lead.nom)}&amp;body=${encodeURIComponent('Bonjour,\n\nJe souhaite améliorer mon site.\n\nMon site : ' + siteUrl + '\nMon téléphone : \nDisponibilités : \n\nCordialement')}"
+      style="display:inline-block;background:#1a1a1a;color:#fff;font-size:15px;font-weight:700;padding:16px 36px;border-radius:4px;text-decoration:none;letter-spacing:1px;">
+      Améliorer mon site →
+    </a>
+  </td></tr>
+
+  <tr><td style="background:#1a1a1a;padding:18px 28px;text-align:center;">
+    <p style="margin:0;color:#888;font-size:12px;">TheCopyCraft · contact@thecopycraft.fr · Paris</p>
+  </td></tr>
+
+</table></td></tr></table>
+</body></html>`;
+}
 
 // ─── EMAIL G — vraies photos influenceurs ─────────────────────────────────────
 
@@ -663,34 +766,96 @@ async function generateEmailG(lead, audit) {
 </body></html>`;
 }
 
-// ─── EMAIL C — vrais mockups Puppeteer ────────────────────────────────────────
+// ─── EMAIL C — site vitrine démo réel avec screenshot ─────────────────────────
 
 async function generateEmailC(lead, audit) {
-  const mockups = await generateMockupScreenshots(lead);
-
   const avis = audit.gmb.reviewCount ? `${audit.gmb.reviewCount} avis` : '';
   const note = audit.gmb.rating ? ` ${audit.gmb.rating}/5` : '';
   const gmb_str = avis ? `${avis}${note} sur Google` : '';
 
-  const mockupBlocks = mockups.map(({ label, b64thumb, fullUrl }) => {
-    const inner = b64thumb
-      ? `<a href="${fullUrl || '#'}" target="_blank" style="display:block;line-height:0;cursor:zoom-in;text-decoration:none;">
-           <img src="${b64thumb}" alt="${label}" title="Cliquez pour voir en grand" style="width:100%;display:block;max-height:200px;object-fit:cover;object-position:top;border:0;" />
-           <div style="background:#222;padding:6px;text-align:center;">
-             <span style="font-size:10px;color:#e8944a;letter-spacing:0.5px;font-weight:600;">↗ Voir en grand</span>
-           </div>
-         </a>`
-      : `<div style="height:160px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">${label}</div>`;
-    return `
-      <td style="width:32%;padding:0 4px;vertical-align:top;">
-        <div style="border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.12);">
-          <div style="background:#1a1a1a;padding:7px 10px;text-align:center;">
-            <span style="font-size:10px;color:#e8944a;font-weight:700;text-transform:uppercase;letter-spacing:1px;">${label}</span>
-          </div>
-          ${inner}
-        </div>
-      </td>`;
-  }).join('');
+  // Génération du site démo + screenshot
+  let demoUrl = null;
+  let screenshotBase64 = null;
+  try {
+    console.log(`  🎨 Génération site démo pour email C...`);
+    const demo = await generateDemoForLead(lead);
+    demoUrl = demo.url;
+    screenshotBase64 = demo.screenshotBase64;
+  } catch (e) {
+    console.log(`  ⚠️  Génération démo échouée: ${e.message}`);
+  }
+
+  // Bloc visuel : screenshot cliquable ou fallback bouton texte
+  let visualBlock;
+  if (demoUrl && screenshotBase64) {
+    visualBlock = `
+  <tr><td style="padding:0 28px 28px;">
+    <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">Voici à quoi pourrait ressembler votre site</p>
+    <p style="margin:0 0 20px;font-size:13px;color:#888;text-align:center;">Nous avons créé une démo personnalisée pour ${lead.nom}</p>
+    <a href="${demoUrl}" style="display:block;text-decoration:none;" target="_blank">
+      <img src="data:image/png;base64,${screenshotBase64}"
+           style="width:100%;max-width:520px;border:1px solid #eee;border-radius:4px;box-shadow:0 4px 20px rgba(0,0,0,.1);display:block;margin:0 auto;"
+           alt="Aperçu de votre site vitrine">
+      <div style="text-align:center;margin-top:12px;">
+        <span style="display:inline-block;padding:14px 32px;background:#e8944a;color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:4px;">
+          Voir le site complet →
+        </span>
+      </div>
+    </a>
+    <p style="margin:14px 0 0;font-size:12px;color:#aaa;text-align:center;font-style:italic;">Site personnalisé pour ${lead.nom} — modifiable à 100%</p>
+  </td></tr>`;
+  } else if (demoUrl) {
+    // Screenshot échoué mais URL disponible
+    visualBlock = `
+  <tr><td style="padding:0 28px 28px;text-align:center;">
+    <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">Voici à quoi pourrait ressembler votre site</p>
+    <a href="${demoUrl}" style="display:inline-block;text-decoration:none;" target="_blank">
+      <div style="padding:14px 32px;background:#e8944a;color:#fff;font-family:Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:4px;">
+        Voir le site vitrine →
+      </div>
+    </a>
+    <p style="margin:14px 0 0;font-size:12px;color:#aaa;text-align:center;font-style:italic;">Démo personnalisée pour ${lead.nom}</p>
+  </td></tr>`;
+  } else {
+    // Fallback complet : ancien système mockups
+    try {
+      const mockups = await generateMockupScreenshots(lead);
+      const mockupBlocks = mockups.map(({ label, b64thumb, fullUrl }) => {
+        const inner = b64thumb
+          ? `<a href="${fullUrl || '#'}" target="_blank" style="display:block;line-height:0;cursor:zoom-in;text-decoration:none;">
+               <img src="${b64thumb}" alt="${label}" title="Cliquez pour voir en grand" style="width:100%;display:block;max-height:200px;object-fit:cover;object-position:top;border:0;" />
+               <div style="background:#222;padding:6px;text-align:center;">
+                 <span style="font-size:10px;color:#e8944a;letter-spacing:0.5px;font-weight:600;">↗ Voir en grand</span>
+               </div>
+             </a>`
+          : `<div style="height:160px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:13px;color:#999;">${label}</div>`;
+        return `
+          <td style="width:32%;padding:0 4px;vertical-align:top;">
+            <div style="border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.12);">
+              <div style="background:#1a1a1a;padding:7px 10px;text-align:center;">
+                <span style="font-size:10px;color:#e8944a;font-weight:700;text-transform:uppercase;letter-spacing:1px;">${label}</span>
+              </div>
+              ${inner}
+            </div>
+          </td>`;
+      }).join('');
+      visualBlock = `
+  <tr><td style="padding:0 28px 28px;">
+    <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">Voici à quoi pourrait ressembler votre site</p>
+    <p style="margin:0 0 20px;font-size:13px;color:#888;text-align:center;">3 directions — vous choisissez le style, on livre en 7 jours</p>
+    <table width="100%" cellpadding="0" cellspacing="0"><tr>${mockupBlocks}</tr></table>
+    <p style="margin:14px 0 0;font-size:12px;color:#aaa;text-align:center;font-style:italic;">Maquettes personnalisées pour ${lead.nom} — modifiables à 100%</p>
+  </td></tr>`;
+    } catch {
+      visualBlock = `
+  <tr><td style="padding:0 28px 28px;text-align:center;">
+    <a href="mailto:contact@thecopycraft.fr?subject=${encodeURIComponent('Site web ' + lead.nom)}"
+      style="display:inline-block;background:#e8944a;color:#fff;font-size:13px;font-weight:700;padding:14px 32px;border-radius:4px;text-decoration:none;letter-spacing:1px;">
+      Voir le site vitrine →
+    </a>
+  </td></tr>`;
+    }
+  }
 
   return `<!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8"></head>
@@ -709,12 +874,7 @@ async function generateEmailC(lead, audit) {
     <p style="margin:0;font-size:15px;color:#444;line-height:1.8;">75% des clients vérifient le site d'un établissement avant de se décider. Sans site, vous perdez ces clients — même ceux qui ont trouvé votre fiche Google.</p>
   </td></tr>
 
-  <tr><td style="padding:0 28px 28px;">
-    <p style="margin:0 0 14px;font-size:15px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">Voici à quoi pourrait ressembler votre site</p>
-    <p style="margin:0 0 20px;font-size:13px;color:#888;text-align:center;">3 directions — vous choisissez le style, on livre en 7 jours</p>
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>${mockupBlocks}</tr></table>
-    <p style="margin:14px 0 0;font-size:12px;color:#aaa;text-align:center;font-style:italic;">Maquettes personnalisées pour ${lead.nom} — modifiables à 100%</p>
-  </td></tr>
+  ${visualBlock}
 
   <tr><td style="padding:0 28px 20px;">
     <div style="background:#1a1a1a;border-radius:8px;padding:22px 24px;">
@@ -753,7 +913,7 @@ async function generateEmailC(lead, audit) {
   <tr><td style="padding:0 28px 36px;text-align:center;">
     <a href="mailto:contact@thecopycraft.fr?subject=${encodeURIComponent('Site web ' + lead.nom)}&amp;body=${encodeURIComponent('Bonjour,\n\nJe suis intéressé par la création de mon site vitrine.\n\nMon établissement : ' + lead.nom + '\nMon téléphone : \nMes disponibilités : \n\nCordialement')}"
       style="display:inline-block;background:#1a1a1a;color:#fff;font-size:15px;font-weight:700;padding:16px 36px;border-radius:4px;text-decoration:none;letter-spacing:1px;">
-      Je veux voir les maquettes complètes →
+      Je veux mon site →
     </a>
   </td></tr>
 
@@ -766,8 +926,9 @@ async function generateEmailC(lead, audit) {
 }
 
 async function generateEmail(lead, audit) {
-  // Emails traités séparément (templates avec vraies images)
+  // Emails traités séparément (templates avec vraies images ou démo site)
   if (audit.emailType === 'C') return addTracking(await generateEmailC(lead, audit), lead);
+  if (audit.emailType === 'D') return addTracking(await generateEmailD(lead, audit), lead);
   if (audit.emailType === 'G') return addTracking(await generateEmailG(lead, audit), lead);
 
   const promptFn = EMAIL_PROMPTS[audit.emailType] || EMAIL_PROMPTS.G;

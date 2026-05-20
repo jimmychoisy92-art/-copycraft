@@ -25,7 +25,7 @@ function generateCode(nom) {
 
 const SMTP = {
   host: 'ssl0.ovh.net', port: 465, secure: true,
-  auth: { user: 'contact@thecopycraft.fr', pass: 'pompiers94Creteil.' },
+  auth: { user: 'contact@thecopycraft.fr', pass: process.env.SMTP_PASS },
 };
 
 const OBJECTIFS_SECTEUR = {

@@ -12,7 +12,7 @@ if (!fs.existsSync(IMG_DIR)) fs.mkdirSync(IMG_DIR, { recursive: true });
 
 const transporter = nodemailer.createTransport({
   host: 'ssl0.ovh.net', port: 465, secure: true,
-  auth: { user: 'contact@thecopycraft.fr', pass: 'pompiers94Creteil.' },
+  auth: { user: 'contact@thecopycraft.fr', pass: process.env.SMTP_PASS },
 });
 
 async function dl(url, file) {

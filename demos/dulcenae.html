@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison de Beauté Dulcenae — Institut de beauté Paris 9</title>
+<meta name="description" content="Institut de beauté à Paris 9 — soins du visage, massages, épilation. Réservez en ligne.">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--gold:#c9a96e;--dark:#1a1a1a;--light:#faf8f5;--gray:#666}
+  body{font-family:'Georgia',serif;color:var(--dark);background:var(--light)}
+
+  /* NAV */
+  nav{position:fixed;top:0;width:100%;background:rgba(250,248,245,.96);backdrop-filter:blur(8px);z-index:100;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e0d4}
+  .logo{font-size:1.3rem;letter-spacing:3px;color:var(--dark);text-transform:uppercase}
+  .logo span{color:var(--gold)}
+  nav ul{list-style:none;display:flex;gap:32px}
+  nav a{text-decoration:none;color:var(--gray);font-size:.85rem;letter-spacing:1px;text-transform:uppercase;font-family:'Arial',sans-serif;transition:color .3s}
+  nav a:hover{color:var(--gold)}
+
+  /* HERO */
+  .hero{height:100vh;background:linear-gradient(135deg,#f5f0e8 0%,#ede5d8 50%,#e8ddd0 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1400&q=80') center/cover;opacity:.15}
+  .hero-content{position:relative;z-index:1}
+  .hero-eyebrow{font-family:'Arial',sans-serif;font-size:.75rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;color:var(--dark);line-height:1.15;margin-bottom:20px}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p{font-size:1.1rem;color:var(--gray);max-width:480px;margin:0 auto 36px;line-height:1.7;font-family:'Arial',sans-serif}
+  .btn{display:inline-block;padding:16px 40px;background:var(--gold);color:#fff;text-decoration:none;font-family:'Arial',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;border:none;cursor:pointer}
+  .btn:hover{background:#b8935a;transform:translateY(-1px)}
+  .btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);margin-left:12px}
+  .btn-outline:hover{background:var(--gold);color:#fff}
+  .hero-badge{position:absolute;top:50%;right:8%;transform:translateY(-50%);background:white;border-radius:50%;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+  .hero-badge .score{font-size:2rem;color:var(--gold);font-weight:700}
+  .hero-badge .label{font-size:.65rem;letter-spacing:1px;text-transform:uppercase;color:var(--gray);font-family:'Arial',sans-serif}
+  .hero-badge .stars{color:var(--gold);font-size:.8rem}
+
+  /* SOINS */
+  .section{padding:100px 40px;max-width:1200px;margin:0 auto}
+  .section-title{text-align:center;margin-bottom:64px}
+  .section-title .eyebrow{font-family:'Arial',sans-serif;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+  .section-title h2{font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--dark)}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+  .soin-card{background:white;padding:48px 36px;transition:all .4s;position:relative;overflow:hidden}
+  .soin-card::before{content:'';position:absolute;bottom:0;left:0;height:3px;width:0;background:var(--gold);transition:width .4s}
+  .soin-card:hover::before{width:100%}
+  .soin-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.08)}
+  .soin-icon{font-size:2.5rem;margin-bottom:20px}
+  .soin-card h3{font-size:1.2rem;margin-bottom:12px;font-weight:400}
+  .soin-card p{font-size:.9rem;color:var(--gray);line-height:1.7;font-family:'Arial',sans-serif;margin-bottom:20px}
+  .soin-price{font-size:.85rem;color:var(--gold);font-family:'Arial',sans-serif;letter-spacing:1px}
+
+  /* AVANT/APRES simulé */
+  .results-section{background:#f0ece5;padding:100px 40px}
+  .results-inner{max-width:1000px;margin:0 auto;text-align:center}
+  .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+  .result-card{background:white;padding:36px 24px;border-radius:2px}
+  .result-number{font-size:3rem;color:var(--gold);font-weight:700;line-height:1}
+  .result-label{font-size:.8rem;color:var(--gray);font-family:'Arial',sans-serif;letter-spacing:1px;text-transform:uppercase;margin-top:8px}
+
+  /* TEMOIGNAGES */
+  .temoignages{padding:100px 40px;max-width:1200px;margin:0 auto}
+  .temoignages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .temoignage{background:white;padding:40px;border-left:3px solid var(--gold)}
+  .temoignage p{font-style:italic;color:var(--dark);line-height:1.8;margin-bottom:20px;font-size:.95rem}
+  .temoignage .auteur{font-family:'Arial',sans-serif;font-size:.8rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+  .stars-row{color:var(--gold);margin-bottom:12px}
+
+  /* CTA */
+  .cta-section{background:var(--dark);padding:100px 40px;text-align:center}
+  .cta-section h2{color:white;font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:16px}
+  .cta-section p{color:#999;font-family:'Arial',sans-serif;margin-bottom:40px;font-size:1.1rem}
+  .cta-section .btn{background:var(--gold)}
+
+  /* FOOTER */
+  footer{background:#111;padding:40px;text-align:center}
+  footer p{color:#555;font-size:.8rem;font-family:'Arial',sans-serif}
+  footer span{color:var(--gold)}
+
+  /* BANDEAU */
+  .bandeau{background:var(--gold);padding:14px;text-align:center}
+  .bandeau p{color:white;font-family:'Arial',sans-serif;font-size:.8rem;letter-spacing:2px;text-transform:uppercase}
+
+  @media(max-width:768px){
+    .grid-3,.results-grid,.temoignages-grid{grid-template-columns:1fr}
+    nav ul{display:none}
+    .hero-badge{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="bandeau">
+  <p>✨ Offre découverte — 20% sur votre premier soin &nbsp;|&nbsp; Réservation en ligne disponible 24h/24</p>
+</div>
+
+<nav>
+  <div class="logo">Dulcenae <span>·</span> Paris</div>
+  <ul>
+    <li><a href="#soins">Nos soins</a></li>
+    <li><a href="#institut">L'Institut</a></li>
+    <li><a href="#avis">Avis clients</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#reservation" class="btn" style="padding:10px 24px;font-size:.75rem">Réserver</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Institut de beauté · Paris 9e · Rue de Caumartin</p>
+    <h1>L'art du soin,<br><em>au cœur de Paris</em></h1>
+    <p>Soins visage, massages et rituels de beauté dans un espace dédié à votre bien-être. Chaque séance est une parenthèse d'exception.</p>
+    <a href="#reservation" class="btn">Prendre rendez-vous</a>
+    <a href="#soins" class="btn btn-outline">Découvrir nos soins</a>
+  </div>
+  <div class="hero-badge">
+    <div class="score">4.9</div>
+    <div class="stars">★★★★★</div>
+    <div class="label">Google</div>
+  </div>
+</section>
+
+<section class="section" id="soins">
+  <div class="section-title">
+    <p class="eyebrow">Nos prestations</p>
+    <h2>Des soins pensés pour vous</h2>
+  </div>
+  <div class="grid-3">
+    <div class="soin-card">
+      <div class="soin-icon">✨</div>
+      <h3>Soin visage sur mesure</h3>
+      <p>Diagnostic de peau, soin profond adapté à votre type de peau. Hydratation, éclat, anti-âge — selon vos besoins du moment.</p>
+      <div class="soin-price">À partir de 75€ · 60 min</div>
+    </div>
+    <div class="soin-card">
+      <div class="soin-icon">🌿</div>
+      <h3>Massage relaxant</h3>
+      <p>Techniques de massage suédois et californien pour libérer les tensions. Un moment de détente absolue dans notre cabine cocooning.</p>
+      <div class="soin-price">À partir de 65€ · 50 min</div>
+    </div>
+    <div class="soin-card">
+      <div class="soin-icon">💫</div>
+      <h3>Rituel corps complet</h3>
+      <p>Gommage exfoliant + modelage corps + enveloppement nourrissant. La combinaison parfaite pour une peau veloutée de la tête aux pieds.</p>
+      <div class="soin-price">À partir de 120€ · 90 min</div>
+    </div>
+    <div class="soin-card">
+      <div class="soin-icon">👁️</div>
+      <h3>Soin contour des yeux</h3>
+      <p>Traitement ciblé anti-cernes, anti-poches et anti-rides. Regard lumineux garanti dès la première séance.</p>
+      <div class="soin-price">À partir de 45€ · 30 min</div>
+    </div>
+    <div class="soin-card">
+      <div class="soin-icon">🌸</div>
+      <h3>Épilation à la cire</h3>
+      <p>Épilation douce et efficace pour tous types de peaux. Produits hypoallergéniques pour les peaux sensibles.</p>
+      <div class="soin-price">À partir de 12€</div>
+    </div>
+    <div class="soin-card">
+      <div class="soin-icon">💅</div>
+      <h3>Soin des mains & pieds</h3>
+      <p>Manucure, pédicure et soin des ongles. Repartez avec des mains et des pieds impeccables.</p>
+      <div class="soin-price">À partir de 35€ · 45 min</div>
+    </div>
+  </div>
+</section>
+
+<div class="results-section">
+  <div class="results-inner">
+    <div class="section-title">
+      <p class="eyebrow">En chiffres</p>
+      <h2>La confiance de nos clientes</h2>
+    </div>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="result-number">4.9</div>
+        <div class="result-label">Note Google</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">+500</div>
+        <div class="result-label">Clientes fidèles</div>
+      </div>
+      <div class="result-card">
+        <div class="result-number">8 ans</div>
+        <div class="result-label">D'expertise beauté</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="temoignages" id="avis">
+  <div class="section-title">
+    <p class="eyebrow">Avis Google vérifiés</p>
+    <h2>Ce que disent nos clientes</h2>
+  </div>
+  <div class="temoignages-grid">
+    <div class="temoignage">
+      <div class="stars-row">★★★★★</div>
+      <p>"Un vrai moment de bonheur. Le soin visage était parfait, ma peau n'a jamais été aussi belle. Je reviendrai sans hésiter !"</p>
+      <div class="auteur">Marie-Laure D. · Paris 9e</div>
+    </div>
+    <div class="temoignage">
+      <div class="stars-row">★★★★★</div>
+      <p>"Accueil chaleureux, ambiance apaisante et résultats visibles immédiatement. Je recommande à toutes mes amies."</p>
+      <div class="auteur">Sophie T. · Paris 8e</div>
+    </div>
+    <div class="temoignage">
+      <div class="stars-row">★★★★★</div>
+      <p>"Le meilleur institut du quartier, sans hésitation. Professionnalisme et bienveillance au rendez-vous à chaque visite."</p>
+      <div class="auteur">Camille B. · Levallois</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="reservation">
+  <h2>Offrez-vous une parenthèse</h2>
+  <p>Réservation en ligne · Disponible 7j/7 · Réponse sous 2h</p>
+  <a href="mailto:contact@dulcenae.fr?subject=Réservation soin&body=Bonjour, je souhaite prendre rendez-vous pour..." class="btn">Réserver maintenant</a>
+</section>
+
+<footer>
+  <p>60 Rue de Caumartin, 75009 Paris &nbsp;·&nbsp; <span>contact@dulcenae.fr</span> &nbsp;·&nbsp; 01 XX XX XX XX</p>
+  <p style="margin-top:8px">© 2026 Maison de Beauté Dulcenae · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

@@ -57,7 +57,7 @@ async function main() {
     host: 'ssl0.ovh.net',
     port: 993,
     secure: true,
-    auth: { user: 'contact@thecopycraft.fr', pass: 'pompiers94Creteil.' },
+    auth: { user: 'contact@thecopycraft.fr', pass: process.env.SMTP_PASS },
     logger: false,
   });
 
@@ -95,7 +95,29 @@ async function main() {
         || subject.toLowerCase().includes('réponse automatique');
       if (isAutoReply) { skipped++; continue; }
 
-      // 3. Vraie réponse ?
+      // 3. Notification "🔥 Lien cliqué" (auto-envoyé depuis thecopycraft.fr)
+      if (subject.includes('Lien') && (subject.includes('cliqué') || subject.includes('clique'))) {
+        const nomMatch = subject.match(/[—\-–]\s*(.+)$/);
+        const nom = nomMatch ? nomMatch[1].trim() : '';
+        if (nom) {
+          // Cherche le lead par correspondance exacte du nom
+          const lead = leads.find(l => l.nom && l.nom.toLowerCase() === nom.toLowerCase())
+            || leads.find(l => l.nom && (l.nom.toLowerCase().includes(nom.toLowerCase()) || nom.toLowerCase().includes(l.nom.toLowerCase())));
+          if (lead) {
+            lead.statut = 'lead_chaud';
+            lead.clicks = (lead.clicks || 0) + 1;
+            lead.date_click = new Date().toISOString().split('T')[0];
+            const today = new Date().toLocaleDateString('fr-FR');
+            if (!lead.notes) lead.notes = '';
+            lead.notes = `[${today}] 🔥 Lien cliqué\n` + lead.notes;
+            replies++;
+            console.log(`  🔥 Lien cliqué : ${nom} (${lead.email})`);
+          }
+        }
+        continue;
+      }
+
+      // 4. Vraie réponse ?
       const senderEmail = extractEmail(from);
       if (senderEmail && senderEmail !== 'contact@thecopycraft.fr' && leadMap[senderEmail]) {
         const lead = leadMap[senderEmail];

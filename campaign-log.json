@@ -889,6 +889,145 @@
       "emailType": "G",
       "date": "2026-05-18T13:07:49.436Z",
       "status": "sent"
+    },
+    {
+      "email": "contact@janthra-spa.com",
+      "nom": "Janthra Spa® - Paris 75 I Thaï Spa I Massage Paris I Massage Thaï",
+      "secteur": "estheticienne",
+      "emailType": null,
+      "date": "2026-05-18T13:10:33.816Z",
+      "status": "error",
+      "error": "Connection closed unexpectedly"
+    },
+    {
+      "email": "contact@pur-paris.com",
+      "nom": "PUR - Saint Germain - Institut de beauté - Manucure russe - Coiffeur Paris 6",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:10:41.335Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@marinel.fr",
+      "nom": "Marinel",
+      "secteur": "estheticienne",
+      "emailType": null,
+      "date": "2026-05-18T13:12:49.407Z",
+      "status": "error",
+      "error": "audit null"
+    },
+    {
+      "email": "charlotte.diasse@biologique-recherche.com",
+      "nom": "Ambassade Biologique Recherche Paris - Rive Gauche",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:13:01.114Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact-ce@hammampacha.com",
+      "nom": "Hammam Pacha",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:15:07.627Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@bcbgparis.com",
+      "nom": "BCBG | Institut de Beauté Paris 15",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:17:17.311Z",
+      "status": "sent"
+    },
+    {
+      "email": "soniaalam@instagram.com",
+      "nom": "Nails Luxe75",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:19:22.718Z",
+      "status": "sent"
+    },
+    {
+      "email": "alesia@loksiamspa.com",
+      "nom": "Lok Siam Spa Rennes - Massage Thaï Traditionnel",
+      "secteur": "estheticienne",
+      "emailType": null,
+      "date": "2026-05-18T13:21:30.730Z",
+      "status": "error",
+      "error": "audit null"
+    },
+    {
+      "email": "lamia.chaka@karabella.fr",
+      "nom": "KARABELLA Institut de Beauté",
+      "secteur": "estheticienne",
+      "emailType": "D",
+      "date": "2026-05-18T13:22:28.594Z",
+      "status": "sent"
+    },
+    {
+      "email": "floriane@cestdujoli.me",
+      "nom": "C'est du Joli - Massages du visage et drainage lymphatique Renata - Paris 7",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:24:34.945Z",
+      "status": "sent"
+    },
+    {
+      "email": "pauline.picaut@spaclemens.com",
+      "nom": "Spa Clemens",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:26:48.792Z",
+      "status": "sent"
+    },
+    {
+      "email": "cbarbereau@atelierdusourcil.com",
+      "nom": "L’Atelier du Sourcil",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:28:57.200Z",
+      "status": "sent"
+    },
+    {
+      "email": "paris@longtimeliner.fr",
+      "nom": "Long-Time-Liner - Violetta Beauty - Maquillage Permanent",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:31:05.525Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@sensation-spa.com",
+      "nom": "Sensation Spa",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:33:12.557Z",
+      "status": "sent"
+    },
+    {
+      "email": "yroland@pagesjaunes.fr",
+      "nom": "Massage Paris 7 - Pivoines Salon de Massage - Massage Tui Na Paris - Massage Energétique - Réflexologie",
+      "secteur": "estheticienne",
+      "emailType": "D",
+      "date": "2026-05-18T13:35:47.077Z",
+      "status": "sent"
+    },
+    {
+      "email": "contact@vernissage-paris.com",
+      "nom": "Vernissage",
+      "secteur": "estheticienne",
+      "emailType": "E",
+      "date": "2026-05-18T13:38:26.330Z",
+      "status": "sent"
+    },
+    {
+      "email": "info@new-esthetic.com",
+      "nom": "New Esthetic Paris",
+      "secteur": "estheticienne",
+      "emailType": "G",
+      "date": "2026-05-18T13:40:54.918Z",
+      "status": "sent"
     }
   ],
   "days": []

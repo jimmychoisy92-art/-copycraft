@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institut Beauté Interieure (Mary Cohr Paris 15e) — Paris 15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair%20Display:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --accent:#C0785A;
+  --dark:#1C0E08;
+  --bg:#FBF9F7;
+  --light:#FAE5DC;
+  --text:#4A2510;
+  --gray:#777;
+  --font:'Playfair Display',serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100;padding:0 5%;border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:70px;max-width:1200px;margin:0 auto}
+.logo{font-size:1.15rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--dark)}
+.logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--gray);font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-btn{padding:10px 24px;background:var(--accent);color:#fff;text-decoration:none;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;transition:opacity .3s}
+.nav-btn:hover{opacity:.85}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 5% 80px;position:relative;overflow:hidden;background:linear-gradient(160deg, var(--bg) 0%, var(--light) 50%, var(--bg) 100%)}
+.hero::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle, var(--light) 0%, transparent 70%);opacity:.6}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-5%;width:400px;height:400px;background:radial-gradient(circle, var(--light) 0%, transparent 70%);opacity:.4}
+.hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.hero-eyebrow{font-size:.75rem;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:28px;font-family:Arial,sans-serif}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);font-weight:400;color:var(--dark);line-height:1.1;margin-bottom:24px}
+.hero h1 em{color:var(--accent);font-style:italic}
+.hero-sub{font-size:1.1rem;color:var(--gray);max-width:520px;margin:0 auto 16px;line-height:1.8;font-family:Arial,sans-serif}
+.hero-accroche{font-size:1rem;color:var(--gray);max-width:480px;margin:0 auto 40px;line-height:1.8;font-family:Arial,sans-serif;font-style:italic}
+.hero-rating{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--light);padding:10px 24px;margin-bottom:40px;font-family:Arial,sans-serif;font-size:.85rem;color:var(--text);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.hero-rating .stars{color:var(--accent);font-size:1rem}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:18px 44px;background:var(--accent);color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;display:inline-block}
+.btn-primary:hover{opacity:.88;transform:translateY(-2px)}
+.btn-secondary{padding:18px 44px;border:1.5px solid var(--accent);color:var(--accent);text-decoration:none;font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .3s;display:inline-block}
+.btn-secondary:hover{background:var(--accent);color:#fff}
+
+/* ── SERVICES ── */
+.section{padding:100px 5%;max-width:1400px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:70px}
+.section-eyebrow{font-family:Arial,sans-serif;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-header h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--dark);line-height:1.2}
+.section-header p{margin-top:16px;font-family:Arial,sans-serif;font-size:.95rem;color:var(--gray);max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.card{background:#fff;padding:48px 36px;position:relative;overflow:hidden;transition:transform .4s,box-shadow .4s}
+.card::after{content:'';position:absolute;bottom:0;left:0;height:3px;width:0;background:var(--accent);transition:width .5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.09)}
+.card:hover::after{width:100%}
+.card-icon{font-size:2rem;color:var(--accent);margin-bottom:20px;line-height:1}
+.card-title{font-size:1.15rem;font-weight:600;color:var(--dark);margin-bottom:14px;line-height:1.3}
+.card-desc{font-family:Arial,sans-serif;font-size:.88rem;color:var(--gray);line-height:1.75;margin-bottom:28px}
+.card-cta{font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:opacity .3s}
+.card-cta:hover{opacity:.7}
+
+/* ── STATS ── */
+.stats-section{background:var(--dark);padding:80px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat{text-align:center;padding:40px 20px}
+.stat-val{font-size:2.8rem;font-weight:300;color:#fff;line-height:1;margin-bottom:10px}
+.stat-val em{color:var(--accent);font-style:normal}
+.stat-label{font-family:Arial,sans-serif;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ── TÉMOIGNAGES ── */
+.temoignages-bg{background:var(--light);padding:100px 5%}
+.temoignages-inner{max-width:1200px;margin:0 auto}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.tcard{background:#fff;padding:44px 36px}
+.stars{color:var(--accent);font-size:1rem;letter-spacing:3px;margin-bottom:20px}
+.tquote{font-size:1rem;color:var(--text);line-height:1.8;font-style:italic;margin-bottom:24px}
+.tauthor{font-family:Arial,sans-serif;font-size:.8rem;letter-spacing:1px;text-transform:uppercase;color:var(--dark);font-weight:600}
+.tville{color:var(--gray);font-weight:400;text-transform:none;letter-spacing:0}
+
+/* ── CTA FINAL ── */
+.cta-section{background:var(--dark);padding:100px 5%;text-align:center}
+.cta-inner{max-width:700px;margin:0 auto}
+.cta-section .eyebrow{font-family:Arial,sans-serif;font-size:.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.cta-section h2{font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#fff;margin-bottom:20px}
+.cta-section p{font-family:Arial,sans-serif;font-size:.95rem;color:rgba(255,255,255,.6);margin-bottom:40px;line-height:1.8}
+.cta-contact{margin-top:48px;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.contact-item{font-family:Arial,sans-serif;font-size:.85rem;color:rgba(255,255,255,.5);text-align:center}
+.contact-item strong{display:block;color:rgba(255,255,255,.9);margin-bottom:4px;font-size:.75rem;letter-spacing:2px;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{background:#111;padding:24px 5%;text-align:center}
+footer p{font-family:Arial,sans-serif;font-size:.75rem;color:rgba(255,255,255,.3);letter-spacing:1px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .cards-grid,.tcards,.stats-inner{grid-template-columns:1fr}
+  .nav-links,.nav-btn{display:none}
+  .hero h1{font-size:2.4rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .stat-val{font-size:2.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><em>Institut</em> Beauté</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="nav-btn" target="_blank">Réserver</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Paris 15 · Depuis 2016</p>
+    <h1>Des soins sur mesure <em>pour</em> révéler votre éclat naturel.<em style="display:none"></em></h1>
+    <p class="hero-accroche">Un espace dédié à votre bien-être, au cœur de Paris.</p>
+    <div class="hero-rating"><span class="stars">★★★★★</span> <strong>4.8/5</strong> sur Google · Plus de 120 avis</div>
+    <div class="hero-btns">
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="btn-primary" target="_blank">Prendre rendez-vous</a>
+      <a href="#services" class="btn-secondary">Découvrir nos services</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div style="padding:0 5%">
+<section class="section" id="services">
+  <div class="section-header">
+    <p class="section-eyebrow">Nos prestations</p>
+    <h2>Ce que nous faisons,<br>nous le faisons bien</h2>
+    <p>Chaque prestation est réalisée avec soin, sur rendez-vous, dans un espace pensé pour votre confort.</p>
+  </div>
+  <div class="cards-grid">
+    
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Soin visage sur mesure</h3>
+      <p class="card-desc">Un soin entièrement personnalisé selon votre type de peau. Nettoyage en profondeur, peeling doux, massage drainage et masque ciblé pour un teint lumineux durable.</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Épilation intégrale</h3>
+      <p class="card-desc">Épilation à la cire tiède ou froide sur l'ensemble du corps. Technique douce, peau parfaitement lisse. Produits apaisants appliqués après chaque zone.</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Manucure & pédicure</h3>
+      <p class="card-desc">Soin complet des mains et des pieds : lime, repousse des cuticules, bain, hydratation et pose de vernis semi-permanent longue durée (3 semaines garanties).</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Massage relaxant</h3>
+      <p class="card-desc">Massage corps complet aux huiles essentielles. 60 minutes de détente profonde pour libérer les tensions musculaires et retrouver sérénité et légèreté.</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Soin corps & enveloppement</h3>
+      <p class="card-desc">Gommage exfoliant suivi d'un enveloppement nutritif au karité ou argile. La peau est régénérée, hydratée et soyeuse. Résultat visible dès la première séance.</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+    <div class="card">
+      <div class="card-icon">✦</div>
+      <h3 class="card-title">Mise en beauté</h3>
+      <p class="card-desc">Maquillage professionnel pour vos événements : mariages, soirées, shootings. Durée 1h30, tenue garantie toute la journée. Sur rendez-vous uniquement.</p>
+      <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="card-cta" target="_blank">Prendre rendez-vous →</a>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-inner">
+    
+    <div class="stat">
+      <div class="stat-val">4.8/5</div>
+      <div class="stat-label">Note Google</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">850+</div>
+      <div class="stat-label">Clientes fidèles</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">8 ans</div>
+      <div class="stat-label">D'expertise</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">100%</div>
+      <div class="stat-label">Produits haut de gamme</div>
+    </div>
+  </div>
+</section>
+
+<!-- TÉMOIGNAGES -->
+<section class="temoignages-bg" id="avis">
+  <div class="temoignages-inner">
+    <div class="section-header">
+      <p class="section-eyebrow">Ils nous font confiance</p>
+      <h2>Ce qu'en disent<br>nos clients</h2>
+    </div>
+    <div class="tcards">
+      
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"Ma peau est transformée depuis le soin visage. Une technicienne exceptionnelle qui prend vraiment le temps d'écouter et de personnaliser chaque soin."</p>
+      <div class="tauthor">Camille B. <span class="tville">— Paris 8e</span></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"Je viens depuis 3 ans et je ne changerai jamais. L'ambiance est apaisante, les soins efficaces, et on repart toujours avec le sourire."</p>
+      <div class="tauthor">Inès M. <span class="tville">— Neuilly-sur-Seine</span></div>
+    </div>
+    <div class="tcard">
+      <div class="stars">★★★★★</div>
+      <p class="tquote">"Un vrai moment de détente et de bien-être. Les produits utilisés sont haut de gamme et les conseils sont précieux."</p>
+      <div class="tauthor">Laurence V. <span class="tville">— Paris 9e</span></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <p class="eyebrow">Prenons rendez-vous</p>
+    <h2>Prêt à franchir le pas ?</h2>
+    <p>Réservez directement en ligne — choisissez votre créneau en moins de 2 minutes.</p>
+    <a href="https://calendly.com/agenda-pro/rdv-tel-copy-craft" class="btn-primary" target="_blank" style="font-size:.8rem;letter-spacing:2.5px">Réserver mon créneau</a>
+    <div class="cta-contact">
+      <div class="contact-item"><strong>Téléphone</strong>01 86 04 05 83</div>
+      <div class="contact-item"><strong>Email</strong>hello@beautyplanet.com</div>
+      <div class="contact-item"><strong>Adresse</strong>14 Pl. du Commerce, 75015 Paris, France</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Institut Beauté Interieure (Mary Cohr Paris 15e) · Paris 15 · 2026</p>
+</footer>
+
+</body>
+</html>

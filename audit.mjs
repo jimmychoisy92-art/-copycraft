@@ -238,8 +238,18 @@ export async function auditLead(lead) {
 
 async function runAudit(lead) {
   // Étape 1 — GMB
-  const gmb = await auditGMB(lead);
-  if (gmb === null) return null; // erreur critique
+  let gmb = await auditGMB(lead);
+  if (gmb === null) {
+    // API GMB inaccessible — fallback conservateur pour ne pas bloquer le lead
+    gmb = {
+      status: 'non_optimisee',
+      rating: null,
+      reviewCount: null,
+      hasPhotos: false,
+      hasDescription: false,
+      placeId: null,
+    };
+  }
 
   await sleep(API_DELAY_MS);
 

@@ -940,8 +940,8 @@ async function main() {
   const leads = loadJSON(LEADS_FILE, []);
   const log   = loadJSON(LOG_FILE, { sentEmails: [], days: {} });
 
-  // Leads éligibles
-  const sentSet = new Set(log.sentEmails.map(e => e.email));
+  // Leads éligibles — seuls les envois réussis bloquent le retry (pas les erreurs)
+  const sentSet = new Set(log.sentEmails.filter(e => e.status === 'sent').map(e => e.email));
   const skipStatuts = new Set([
     'refus', 'bounce', 'sans_suite',
     'j0_envoyé', 'j3_relance', 'j7_relance',

@@ -241,9 +241,11 @@ async function main() {
 
     const days = daysBetween(dateStr);
 
-    if (lead.statut === 'j0_envoyé' && days >= 3 && days < 4) {
+    if (lead.statut === 'j0_envoyé' && days >= 3 && days < 7) {
       j3Leads.push(lead);
-    } else if (lead.statut === 'j3_relance' && days >= 7 && days < 8) {
+    } else if (lead.statut === 'j0_envoyé' && days >= 7) {
+      j7Leads.push(lead); // a raté la fenêtre J+3 — on envoie directement le dernier message
+    } else if (lead.statut === 'j3_relance' && days >= 7) {
       j7Leads.push(lead);
     }
   }

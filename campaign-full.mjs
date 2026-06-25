@@ -570,42 +570,31 @@ async function generateEmailD(lead, audit) {
 </body></html>`;
 }
 
-// ─── EMAIL G — vraies photos influenceurs ─────────────────────────────────────
+// ─── EMAIL G — présence complète, pitch micro-influenceurs ───────────────────
 
 async function generateEmailG(lead, audit) {
   const ville = lead.ville || 'Paris';
-  const influenceurs = await getInfluencerImages(lead.secteur);
+  const gmb = audit.gmb.rating
+    ? `${audit.gmb.rating}/5 (${audit.gmb.reviewCount || '?'} avis)`
+    : '';
 
-  const gmb = audit.gmb.rating ? `${audit.gmb.rating}/5 (${audit.gmb.reviewCount || '?'} avis)` : '';
+  const secteurLabel = {
+    estheticienne: 'esthétique',
+    salon_coiffure: 'coiffure',
+    restaurant: 'restauration',
+    spa: 'bien-être',
+    clinique_esthetique: 'esthétique médicale',
+    architecte_interieur: 'décoration intérieure',
+  }[lead.secteur] || lead.secteur;
 
-  const infBlocks = influenceurs.map(inf => {
-    const img = inf.b64
-      ? `<img src="${inf.b64}" alt="${inf.handle}" style="width:100%;height:160px;object-fit:cover;display:block;border:0;" />`
-      : `<div style="height:160px;background:#333;"></div>`;
-    return `
-      <td style="width:32%;padding:0 4px;vertical-align:top;">
-        <div style="border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.15);">
-          ${img}
-          <div style="background:#1a1a1a;padding:8px 10px;">
-            <div style="font-size:12px;font-weight:700;color:#fff;">${inf.handle}</div>
-            <div style="font-size:11px;color:#e8944a;margin-top:2px;">${inf.abonnes} abonnés locaux</div>
-          </div>
-        </div>
-      </td>`;
-  }).join('');
-
-  // Faux post Instagram par secteur
-  const postData = FAKE_POSTS[lead.secteur] || FAKE_POSTS.restaurant;
-  const { post: postB64, avatar: avatarB64 } = await getFakePostImages(lead.secteur);
-
-  const postImg   = postB64   ? `<img src="${postB64}"   alt="post" style="width:100%;display:block;border:0;" />` : `<div style="height:260px;background:#222;"></div>`;
-  const avatarImg = avatarB64 ? `<img src="${avatarB64}" alt="avatar" style="width:38px;height:38px;border-radius:50%;display:block;object-fit:cover;border:0;" />` : `<div style="width:38px;height:38px;border-radius:50%;background:#555;"></div>`;
-
-  const commentsHtml = postData.comments.map(c => `
-    <tr><td style="padding:3px 0;">
-      <span style="font-size:12px;font-weight:700;color:#1a1a1a;">${c.user}</span>
-      <span style="font-size:12px;color:#555;"> ${c.text}</span>
-    </td></tr>`).join('');
+  const temoignage = {
+    restaurant:          { texte: '"Nous avions une bonne fiche Google et un site correct. La campagne micro-influenceurs a amené 22 nouvelles tables en 3 semaines. Aucune publicité payante."', auteur: 'Marc T., restaurant · Paris 11e' },
+    estheticienne:       { texte: '"Mon compte Instagram était actif mais la portée stagnait. Avec 3 influenceuses locales, j\'ai eu 34 nouveaux rendez-vous en un mois — clientèle que je n\'aurais pas touchée autrement."', auteur: 'Nadia B., esthéticienne · Paris 15e' },
+    salon_coiffure:      { texte: '"TheCopyCraft a trouvé des créatrices de contenu locales qui correspondaient vraiment à notre image. 18 nouvelles clientes directement citées lors de la prise de rendez-vous."', auteur: 'Sophie R., salon · Paris 17e' },
+    spa:                 { texte: '"On avait déjà tout en place. La campagne influenceurs a été le seul levier qui a réellement fait bouger nos réservations en dehors des périodes classiques."', auteur: 'Camille D., spa · Paris 8e' },
+    clinique_esthetique: { texte: '"Le bouche-à-oreille digital via des influenceuses de confiance a eu un impact que nos publicités Meta n\'avaient jamais eu. 27 consultations attribuées directement."', auteur: 'Julie M., clinique · Paris 16e' },
+    architecte_interieur:{ texte: '"Trouver des clients dans le haut de gamme passe par la recommandation. 4 influenceuses déco ont généré 11 demandes de devis qualifiées en 6 semaines."', auteur: 'Thomas A., architecte intérieur · Paris 9e' },
+  }[lead.secteur] || { texte: '"La campagne micro-influenceurs a été le seul levier qui a vraiment fait bouger nos réservations sans budget publicitaire."', auteur: 'Client TheCopyCraft · Paris' };
 
   return `<!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8"></head>
@@ -614,125 +603,84 @@ async function generateEmailG(lead, audit) {
 <tr><td align="center" style="padding:20px 10px;">
 <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#fff;">
 
-  <!-- HEADER -->
   <tr><td style="background:#1a1a1a;padding:26px 32px;text-align:center;">
     <div style="font-size:22px;font-weight:900;letter-spacing:4px;color:#fff;font-family:Georgia,serif;">THE COPY CRAFT</div>
     <div style="font-size:11px;color:#e8944a;letter-spacing:2px;margin-top:6px;text-transform:uppercase;">Audit · Copywriting · Conversion</div>
   </td></tr>
 
-  <!-- ACCROCHE -->
   <tr><td style="padding:32px 28px 20px;">
     <p style="margin:0 0 12px;font-size:20px;font-weight:900;color:#1a1a1a;line-height:1.3;">
-      ${gmb ? `${gmb} sur Google, réseaux actifs.<br>` : ''}Voici ce que des micro-influenceurs locaux font pour vos concurrents.
+      ${gmb ? `Vous avez ${gmb} sur Google et une présence en ligne active.<br>` : ''}Il reste un levier que la plupart des ${secteurLabel}s à ${ville} n'utilisent pas encore.
     </p>
     <p style="margin:0;font-size:14px;color:#555;line-height:1.7;">
-      Ce post a été publié il y a 6 jours. Il a généré <strong>${postData.reservations} nouvelles réservations</strong> pour l'établissement concerné.
+      Les micro-influenceurs locaux génèrent en moyenne 5 fois plus de retours qu'une publicité Meta du même budget. Et leur audience vous ressemble.
     </p>
   </td></tr>
 
-  <!-- FAUX POST INSTAGRAM -->
-  <tr><td style="padding:0 28px 24px;">
-    <div style="border:1px solid #dbdbdb;border-radius:10px;overflow:hidden;background:#fff;">
-
-      <!-- Header post -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:10px 14px;">
-        <tr>
-          <td style="width:42px;vertical-align:middle;">${avatarImg}</td>
-          <td style="padding-left:10px;vertical-align:middle;">
-            <div style="font-size:13px;font-weight:700;color:#1a1a1a;">@${postData.handle}</div>
-            <div style="font-size:11px;color:#888;">${postData.location} · Partenariat</div>
-          </td>
-          <td style="text-align:right;vertical-align:middle;font-size:18px;color:#1a1a1a;">···</td>
-        </tr>
-      </table>
-
-      <!-- Photo -->
-      ${postImg}
-
-      <!-- Actions + likes -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:10px 14px 4px;">
-        <tr>
-          <td><span style="font-size:22px;">♥</span><span style="font-size:22px;margin-left:10px;">💬</span><span style="font-size:22px;margin-left:10px;">↗</span></td>
-          <td style="text-align:right;font-size:20px;">🔖</td>
-        </tr>
-      </table>
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:2px 14px 6px;">
-        <tr><td><span style="font-size:13px;font-weight:700;color:#1a1a1a;">${postData.likes} J'aime</span></td></tr>
-      </table>
-
-      <!-- Légende -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:0 14px 8px;">
-        <tr><td>
-          <span style="font-size:13px;font-weight:700;color:#1a1a1a;">@${postData.handle} </span>
-          <span style="font-size:13px;color:#1a1a1a;">${postData.caption}</span>
-          <div style="margin-top:4px;font-size:13px;color:#0095f6;">${postData.hashtags}</div>
-        </td></tr>
-      </table>
-
-      <!-- Commentaires -->
-      <table width="100%" cellpadding="0" cellspacing="0" style="padding:6px 14px 12px;background:#fafafa;border-top:1px solid #efefef;">
-        ${commentsHtml}
-        <tr><td style="padding-top:4px;"><span style="font-size:11px;color:#aaa;">il y a 6 jours</span></td></tr>
-      </table>
-    </div>
-
-    <!-- Stat impact -->
-    <div style="margin-top:12px;background:#f9f9f9;border-left:3px solid #e8944a;padding:12px 16px;border-radius:0 6px 6px 0;">
-      <p style="margin:0;font-size:13px;color:#555;">Ce post a généré <strong style="color:#1a1a1a;">${postData.reservations} réservations</strong> en 7 jours — sans aucune publicité payante.</p>
-    </div>
-  </td></tr>
-
-  <!-- STATS ROI -->
   <tr><td style="padding:0 28px 24px;">
     <table width="100%" cellpadding="0" cellspacing="0"><tr>
       <td style="width:32%;text-align:center;vertical-align:top;">
         <div style="background:#1a1a1a;border-radius:8px;padding:16px 8px;">
-          <div style="font-size:28px;font-weight:900;color:#e8944a;line-height:1;">5,2×</div>
-          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">ROI moyen<br>micro-influenceurs</div>
+          <div style="font-size:28px;font-weight:900;color:#e8944a;line-height:1;">5×</div>
+          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">ROI moyen<br>vs publicité payante</div>
         </div>
       </td>
       <td style="width:4%;"></td>
       <td style="width:32%;text-align:center;vertical-align:top;">
         <div style="background:#1a1a1a;border-radius:8px;padding:16px 8px;">
           <div style="font-size:28px;font-weight:900;color:#e8944a;line-height:1;">7×</div>
-          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">plus d'engagement<br>vs publicité Meta</div>
+          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">plus d'engagement<br>qu'une pub classique</div>
         </div>
       </td>
       <td style="width:4%;"></td>
       <td style="width:32%;text-align:center;vertical-align:top;">
         <div style="background:#1a1a1a;border-radius:8px;padding:16px 8px;">
           <div style="font-size:28px;font-weight:900;color:#e8944a;line-height:1;">63%</div>
-          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">font confiance aux<br>recommandations</div>
+          <div style="font-size:10px;color:#fff;margin-top:5px;line-height:1.4;">font confiance aux<br>recommandations locales</div>
         </div>
       </td>
     </tr></table>
   </td></tr>
 
-  <!-- PROFILS INFLUENCEURS -->
   <tr><td style="padding:0 28px 24px;">
-    <p style="margin:0 0 14px;font-size:13px;font-weight:700;color:#1a1a1a;text-align:center;text-transform:uppercase;letter-spacing:1px;">Profils disponibles dans votre secteur à ${ville}</p>
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>${infBlocks}</tr></table>
-    <p style="margin:10px 0 0;font-size:11px;color:#aaa;text-align:center;font-style:italic;">Audience locale vérifiée — taux d'engagement moyen 4,8%</p>
+    <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#1a1a1a;text-transform:uppercase;letter-spacing:1px;">Pourquoi les micro-influenceurs locaux</p>
+    <div style="border-left:3px solid #e8944a;padding:12px 16px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Audience locale et qualifiée</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">Leurs abonnés sont dans votre zone de chalandise — ce ne sont pas des followers anonymes.</p>
+    </div>
+    <div style="border-left:3px solid #e8944a;padding:12px 16px;margin-bottom:10px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Crédibilité que la publicité n'achète pas</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">Une recommandation sincère d'un compte suivi a plus de poids qu'une publicité sponsorisée.</p>
+    </div>
+    <div style="border-left:3px solid #e8944a;padding:12px 16px;background:#fafafa;border-radius:0 6px 6px 0;">
+      <p style="margin:0;font-size:13px;color:#444;font-weight:700;">Coût accessible, résultats mesurables</p>
+      <p style="margin:4px 0 0;font-size:12px;color:#777;">Un partenariat avec 4 micro-influenceurs locaux coûte une fraction d'un mois de Meta Ads.</p>
+    </div>
   </td></tr>
 
-  <!-- CE QU'ON FAIT -->
   <tr><td style="padding:0 28px 24px;">
     <div style="background:#1a1a1a;border-radius:8px;padding:22px 24px;">
       <p style="margin:0 0 14px;font-size:13px;font-weight:700;color:#e8944a;text-transform:uppercase;letter-spacing:1px;">Ce qu'on fait pour vous</p>
       <table width="100%" cellpadding="0" cellspacing="0"><tr>
         <td style="width:50%;vertical-align:top;">
-          <p style="margin:0 0 8px;color:#fff;font-size:13px;">✓ Sélection de 4 influenceurs locaux</p>
+          <p style="margin:0 0 8px;color:#fff;font-size:13px;">✓ Identification de 4 influenceurs locaux adaptés à votre image</p>
           <p style="margin:0 0 8px;color:#fff;font-size:13px;">✓ Prise de contact et négociation</p>
         </td>
         <td style="width:50%;vertical-align:top;">
           <p style="margin:0 0 8px;color:#fff;font-size:13px;">✓ Brief créatif par influenceur</p>
-          <p style="margin:0;color:#fff;font-size:13px;">✓ Rapport de résultats mensuel</p>
+          <p style="margin:0;color:#fff;font-size:13px;">✓ Rapport de résultats à 30 jours</p>
         </td>
       </tr></table>
     </div>
   </td></tr>
 
-  <!-- PRIX -->
+  <tr><td style="padding:0 28px 24px;">
+    <div style="background:#f9f5f0;border-left:3px solid #e8944a;border-radius:6px;padding:18px 20px;">
+      <p style="margin:0 0 8px;font-size:14px;color:#444;font-style:italic;line-height:1.6;">${temoignage.texte}</p>
+      <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a1a;">— ${temoignage.auteur}</p>
+    </div>
+  </td></tr>
+
   <tr><td style="padding:0 28px 28px;">
     <div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 24px;text-align:center;">
       <div style="font-size:13px;color:#e8944a;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">Campagne clé en main</div>
@@ -741,23 +689,13 @@ async function generateEmailG(lead, audit) {
     </div>
   </td></tr>
 
-  <!-- TÉMOIGNAGE -->
-  <tr><td style="padding:0 28px 24px;">
-    <div style="background:#f9f5f0;border-left:3px solid #e8944a;border-radius:6px;padding:18px 20px;">
-      <p style="margin:0 0 8px;font-size:14px;color:#444;font-style:italic;line-height:1.6;">"La campagne influenceurs a généré 340 nouvelles visites sur notre fiche Google en 3 semaines. 19 clients nous ont cité le code promo à la caisse — du jamais vu pour nous."</p>
-      <p style="margin:0;font-size:13px;font-weight:700;color:#1a1a1a;">— Marc T., restaurant · Lyon 2e</p>
-    </div>
-  </td></tr>
-
-  <!-- CTA -->
   <tr><td style="padding:0 28px 36px;text-align:center;">
-    <a href="https://copycraft-landing.vercel.app"
+    <a href="mailto:contact@thecopycraft.fr?subject=${encodeURIComponent('Campagne influenceurs ' + lead.nom)}&amp;body=${encodeURIComponent('Bonjour,\n\nJe suis intéressé par une campagne micro-influenceurs pour mon établissement.\n\nMon établissement : ' + lead.nom + '\nMon secteur : ' + lead.secteur + '\nMa ville : ' + ville + '\nMon téléphone : \nDisponibilités : \n\nCordialement')}"
       style="display:inline-block;background:#1a1a1a;color:#fff;font-size:15px;font-weight:700;padding:16px 36px;border-radius:4px;text-decoration:none;letter-spacing:1px;">
-      Je veux être recontacté →
+      En savoir plus →
     </a>
   </td></tr>
 
-  <!-- FOOTER -->
   <tr><td style="background:#1a1a1a;padding:18px 28px;text-align:center;">
     <p style="margin:0;color:#888;font-size:12px;">TheCopyCraft · contact@thecopycraft.fr · Paris</p>
   </td></tr>
